@@ -15,6 +15,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 200px;
 }
 
 /* navigation buttons have full width */
@@ -31,37 +32,139 @@ ul {
 
 /* Task 2.1. Lay out the childs of the 'body' using Grid Template Areas. */
 
+body {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "h h"
+    "n m"
+    "n m"
+    "f f";
+  background-color: #0d0b0b;
+  font-family: 'Arial Narrow', sans-serif;
+  color: 	#dddddd;
+}
+
+header { grid-area: h; }
+nav    { grid-area: n; }
+main   { grid-area: m; overflow-y: auto; }
+footer { grid-area: f; }
+
+@media (max-width: 600px) {
+  body {
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "h"
+      "n"
+      "m"
+      "f";
+  }
+}
 
 /* Task 3.1. Make the header element a flex container and center its children
    vertically and horizontally.
  */
-
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* Task 3.2. Make the list items of the unordered list in the nav element a flex container, 
    use column direction and center the child items
  */
+nav button {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  border: 1.5px solid #b72530;
+  border-radius: 10px;
+  padding: 9px 20px;
+  margin: 5px 10px;
+  cursor: pointer;
+  font-family: 'Arial Narrow', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #b72530;
+  letter-spacing: 0.02em;
+  width: 100%;
+}
+
+nav button:hover {
+  background: #b72530;
+  border-color: #b72530;
+  color: #0d0b0b;
+}
 
 /* Task 3.3. Make the main element a Flexbox container */
-
+main {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 8px;
+  padding: 8px;
+  color: #dddddd;
+}
 
 /* Task 3.4. Make the footer's ul a Flexbox container */
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
+footer p {
+  padding: 0px 30px;
+  margin: 25px 10px;
+}
 
 /* From here on styling from exercise 1 */
 img {
   border-radius: 12px;
+  width: 100%;
 }
 
 article {
-  background-color: lightgray;
-  border-radius: 16px;
+  background-color: #001011;
   padding: 16px;
   width: 384px;
   margin: 8px;
+  border: 3px solid #00a0b0;
+}
+
+article:hover {
+  background-color: #171408;
+  border-color: #edc951;
+}
+
+article:hover h1,
+article:hover h2 {
+  color: #edc951;
+}
+
+article button {
+  width: 10em;
+  border: 1.5px solid #dddddd;
+  border-radius: 10px;
+  padding: 9px 20px;
+  margin: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #dddddd;
+  background: transparent;
+}
+
+article button:hover {
+  background: #dddddd;
+  border-color: #dddddd;
+  color: #0d0b0b;
 }
 
 a {
-  color: beige;
+  color: #edc951;
 }
 
 span {
@@ -69,9 +172,138 @@ span {
 }
 
 .genre {
-  padding: 4px 8px;
-  border: solid black 1px;
-  border-radius: 6px;
-  background-color: darkgray;
-  font-weight: bold;
+  border: 1px solid #dddddd;
+  margin-right: 5px;
+  padding: 5px 10px;
+}
+
+h1, h2 {
+  font-family: 'American Typewriter', serif;
+  color: #00a0b0;
+}
+
+/* ── Form Container ── */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #1a1717;
+  border: 1.5px solid rgba(0, 160, 176, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 480px;
+}
+
+/* ── Form Title ── */
+form h2 {
+  margin: 0 0 8px 0;
+  font-family: 'American Typewriter', serif;
+  color: #00a0b0;
+  font-size: 22px;
+}
+
+/* ── Field Groups ── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ── Labels ── */
+.form-group label {
+  font-family: 'Arial Narrow', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #aaaaaa;
+}
+
+/* ── Inputs, Textareas, Selects ── */
+.form-group input,
+.form-group textarea,
+.form-group select {
+  background-color: #0d0b0b;
+  border: 1.5px solid rgba(0, 160, 176, 0.25);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: 'Arial Narrow', sans-serif;
+  font-size: 14px;
+  color: #dddddd;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #00a0b0;
+  background-color: #111010;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(221, 221, 221, 0.3);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ── Divider ── */
+.form-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin: 4px 0;
+}
+
+/* ── Form Actions ── */
+.form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+/* ── Submit Button ── */
+.btn-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #00a0b0;
+  border: 1.5px solid #00a0b0;
+  border-radius: 20px;
+  padding: 9px 22px;
+  cursor: pointer;
+  font-family: 'Arial Narrow', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0d0b0b;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-submit:hover {
+  background: #00b8cc;
+  border-color: #00b8cc;
+  transform: translateY(-1px);
+}
+
+/* ── Cancel Button ── */
+.btn-cancel {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  border: 1.5px solid rgba(0, 160, 176, 0.35);
+  border-radius: 20px;
+  padding: 9px 22px;
+  cursor: pointer;
+  font-family: 'Arial Narrow', sans-serif;
+  font-size: 14px;
+  color: #00a0b0;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-cancel:hover {
+  background: rgba(0, 160, 176, 0.1);
+  transform: translateY(-1px);
 }

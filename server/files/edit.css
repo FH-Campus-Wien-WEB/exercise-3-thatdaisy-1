@@ -1,4 +1,4 @@
-@import url(base.css);
+@import url(index.css);
 
 input,
 select,
@@ -8,4 +8,56 @@ textarea {
 
 div {
   margin: 4px 0px;
+}
+
+form {
+  width: 750px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Arial Narrow', sans-serif;
+  background-color: #1a1717;
+  border: 1.5px solid rgba(0, 160, 176, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+form input,
+form textarea {
+  font-family: 'Arial Narrow', sans-serif;
+}
+
+.btn-submit {
+  display: inline-flex;
+  align-items: center;
+  background: #00a0b0;
+  border: 1.5px solid #00a0b0;
+  border-radius: 20px;
+  padding: 9px 22px;
+  cursor: pointer;
+  font-family: 'Arial Narrow', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #0d0b0b;
+}
+
+.btn-submit:hover {
+  background: #00b8cc;
+  border-color: #00b8cc;
+}
+
+.btn-cancel {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  border: 1.5px solid rgba(0, 160, 176, 0.35);
+  border-radius: 20px;
+  padding: 9px 22px;
+  cursor: pointer;
+  font-family: 'Arial Narrow', sans-serif;
+  font-size: 14px;
+  color: #00a0b0;
+}
+
+.btn-cancel:hover {
+  background: rgba(0, 160, 176, 0.1);
 }
